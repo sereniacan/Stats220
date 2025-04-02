@@ -1,0 +1,75 @@
+---
+title: Clothing Trends Around Me
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+
+```
+
+## What's going on with this data?
+
+You need to change the contents of this Rmd! Replace the R code and markdown give below in this template document.
+
+```{r}
+read_csv <- ("https://docs.google.com/spreadsheets/d/e/2PACX-1vS
+             CwvT8UUm-PSa93ANBfs8MOIvbMR6LtA1lPz-M6hlpZ0hfKugsB
+             8VnwZkVUmLtrSO2MeFG40meKJhm/pub?gid=311766236&sing
+             le=true&output=csv")
+logged_data <- read_csv 
+logged_data <- (weather_observe = c("16 (orless)",
+                                           "17",
+                                           "18",
+                                           "19",
+                                           "20",
+                                           "21",
+                                           "22",
+                                           "23+"))
+logged_data <- (com_styles = c("Casual (T-shirt, pants)",
+                                      "Loungewear (sweatpants, sweater)",
+                                      "Y2K (graphic tees, ripped baggy jeans, retro)",
+                                      "Buisness (suit & tie, pencil skirts)",
+                                      "Minimalist (neutral tones, jumper, suit pants)",
+                                      "Maximalist (bright colours, 
+                                       layers)","Formal(blazers, dresses, blouses)", 
+                                      "Other...."))
+
+logged_data%>%
+  rename(where_obs = 2,
+         num_ppl = 3,
+         weather_observe = 4,
+         com_patterns = 5,
+         com_styles = 6,
+         num_hats = 7)
+
+print(latest_data)
+
+# identifying two summary variables
+
+latest_data$weather_observe %>%
+  length()
+
+mean_weather_observe <- latest_data$weather_observe %>%
+  mean() %>%
+  round(1)
+
+# coding the bar graph
+
+latest_data %>%
+  ggplot() +
+  geom_bar(aes(y = common_patterns,
+               fill = weather_observe))+
+  labs(titles = "Fashion trends based on weather",
+       x = "Number of students",
+       y = "rating",
+       caption = "Source: Clothing Trends Around You!")
+
+glimpse(latest_data)
+
+```
+
